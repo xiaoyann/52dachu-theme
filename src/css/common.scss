@@ -1,0 +1,104 @@
+@import './conf.scss';
+
+body {
+  margin: 0;
+  font-family: Helvetica Neue,Helvetica,Arial,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Microsoft Yahei,sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #F5F5F5;
+}
+
+a {
+  text-decoration: none;
+  color: #167ac6;
+
+  &:link {
+    color: #167ac6;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.clearfix {
+  &:after,
+  &:before {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.container {
+  width: $containerWidth;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+
+.sidebar {
+  float: right;
+  width: 270px;
+  height: 300px;
+  background-color: blue;
+}
+
+.content {
+  float: left;
+  width: 715px;
+  margin-right: 15px;
+  min-height: 300px;
+  background-color: #FFF;
+}
+
+.logo {
+  float: left;
+  height: 26px;
+  padding: 5px 0;
+  font-weight: 700;
+}
+
+.logo--52 {
+  float: left;
+  padding-right: 1px;
+  line-height: 26px;
+  font-size: 23px;
+  color: #000;
+}
+
+.logo--dachu {
+  float: left;
+  padding: 2px 3px 3px;
+  border-radius: 10px;
+  font-size: 20px;
+  line-height: 1;
+  color: #FFF;
+  background-color: #E62117;
+}
+
+.article {
+  padding: 15px;
+
+  pre {
+    overflow: auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f5f2f0;
+  }
+
+  h2 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #EEE;
+  }
+
+  p {
+    word-wrap: break-word;
+  }
+}
+
+
+
