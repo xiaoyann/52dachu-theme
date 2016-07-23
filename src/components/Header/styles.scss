@@ -1,0 +1,13 @@
+@import '../../css/conf.scss';
+
+.header {
+  padding: 7px 0;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);
+  background-color: #FFF;
+}
+
+.header--bd {
+  width: $containerWidth;
+  height: 36px;
+  margin: 0 auto;
+}
