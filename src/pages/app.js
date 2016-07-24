@@ -24,9 +24,7 @@ class Application extends Component {
       <div> 
         <Header></Header>
         <div className="container clearfix">
-          <div className="content">
-            {this.props.children}
-          </div>
+          {this.props.children}
           <div className="sidebar"></div>
         </div>
       </div>

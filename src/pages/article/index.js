@@ -6,7 +6,7 @@ var data = {"text":"<p>因为最近在工作中尝试了 <a href=\"https://githu
 class Article extends Component {
   render() {
     return (
-      <div>
+      <div className="content">
         <div className="article" dangerouslySetInnerHTML={{__html: data.text}} />
       </div>
     );

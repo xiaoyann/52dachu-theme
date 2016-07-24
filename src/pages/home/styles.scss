@@ -6,7 +6,7 @@
 
 .cate-bar--tab {
   display: inline-block;
-  padding: 5px 6px;;
+  padding: 6px 6px;
   margin: 0 6px;
   line-height: 1;
   color: #666;
@@ -14,7 +14,11 @@
 }
 
 .cate-bar--active {
-  color: #4078c0;
+  border-radius: 3px;
+  // color: #167AC6;
+  // color: #E62117;
+  color: #CC181E;
+  background-color: #F5F5F5;
   
   &:hover {
     text-decoration: none;
@@ -27,19 +31,31 @@
 
 .article-item {
   padding: 15px 15px 15px 22px;
-  border-bottom: 1px solid #EEE;
+  border-top: 1px solid #EEE;
+
+  &:first-child {
+    border: none;
+  }
 }
 
 .article-item--title {
-  margin: 0;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1;
   color: #000;
+  
+  &:hover {
+    color: #167AC6;
+    text-decoration: none;
+  }
+
+  h3 {
+    margin: 0;  
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1;
+  }
 }
 
 .article-item--summary {
-  margin: 10px 0 8px 0;
+  margin: 12px 0 8px 0;
   font-size: 13px;
   color: #767676;
 }
