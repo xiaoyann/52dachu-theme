@@ -40,7 +40,11 @@
 
 .article-item--title {
   color: #000;
-  
+
+  &:link {
+    color: #000;  
+  }
+
   &:hover {
     color: #167AC6;
     text-decoration: none;
@@ -60,24 +64,4 @@
   color: #767676;
 }
 
-.article-item--ft {
-  height: 20px;
-  line-height: 20px;
-  font-size: 12px;
-}
-
-.article-item--time {
-  color: #999;
-}
-
-.article-item--author {
-  padding: 0 5px;
-}
-
-.article-item--avatar {
-  float: left;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
 

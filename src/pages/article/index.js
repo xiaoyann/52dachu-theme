@@ -7,7 +7,19 @@ class Article extends Component {
   render() {
     return (
       <div className="content">
-        <div className="article" dangerouslySetInnerHTML={{__html: data.text}} />
+        <div className="article">
+          <div>
+            <h1 className="article--title">使用 webpack 构建组件化前端项目</h1>
+            <div className="article--info">
+              <img className="article--avatar" src="https://sfault-avatar.b0.upaiyun.com/406/988/4069887770-55640c43a9e91_small" />
+              <a className="article--author">xiaoyann</a>
+              <span className="article--time">发布于 1 分钟前</span>
+              <span className="article--tag">JavaScript</span>
+              <span className="article--tag">前端</span>
+            </div>
+          </div>
+          <div className="article--bd" dangerouslySetInnerHTML={{__html: data.text}} />
+        </div>
       </div>
     );
   }

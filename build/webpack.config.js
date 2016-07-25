@@ -66,7 +66,8 @@ var config = {
     app: ['./pages/app.js'],
     lib: [
       'react', 'react-dom', 'react-router',
-      'redux', 'react-redux', 'redux-thunk'
+      'redux', 'react-redux', 'redux-thunk',
+      'whatwg-fetch'
     ],
   },
   output: {

@@ -1,5 +1,12 @@
-.page1 {
-  display: flex;
-  padding: 20px;
-  color: red;
+.article--title {
+  margin: 0;
+  padding-bottom: 5px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #333;
 }
+
+.article--bd {
+  padding-top: 15px;
+}
+

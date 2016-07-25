@@ -11,24 +11,21 @@
 
 var webpack = require('webpack');
 var config = require('./webpack.config');
-var RenamePlugin = require('./rename.plugin');
 
 var args = process.argv;
 var watch = args.indexOf('--watch') > -1;
 var online = args.indexOf('--deploy=online') > -1;
 
 // 测试环境静态资源 domain
-var testPublicPath = '/';
+var testPublicPath = '/static/';
 // 生产环境静态资源 domain
-var onlinePublicPath = '/';
+var onlinePublicPath = '/static/';
 
 if (online) {
   config.output.publicPath = onlinePublicPath; 
 } else {
   config.output.publicPath = testPublicPath; 
 }
-
-// config.plugins.push(new RenamePlugin());
 
 var compiler = webpack(config);
 
