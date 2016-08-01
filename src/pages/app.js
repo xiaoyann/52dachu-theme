@@ -39,7 +39,7 @@ render((
     <Router history={browserHistory}>
       <Route path="/" component={Application}>
         <IndexRoute component={Home}/>
-        <Route path="/article" component={Article}></Route>
+        <Route path="/article/:pathname" component={Article}></Route>
       </Route>
     </Router>
   </Provider>
