@@ -65,6 +65,7 @@ var config = {
   entry: {
     app: ['./pages/app.js'],
     lib: [
+      'babel-polyfill',
       'react', 'react-dom', 'react-router',
       'redux', 'react-redux', 'redux-thunk',
       'whatwg-fetch'
