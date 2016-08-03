@@ -18,22 +18,22 @@ class Article extends Component {
   }
 
   render() {
-    let { article } = this.props;
+    let { posts } = this.props;
+    let tags = posts.tag || [];
 
     return (
       <div className="content">
         <div className="article">
           <div>
-            <h1 className="article--title">{article.title}</h1>
+            <h1 className="article--title">{posts.title}</h1>
             <div className="article--info">
               <img className="article--avatar" src="https://avatars0.githubusercontent.com/u/10356168?v=3&s=460" />
               <a className="article--author" href="https://github.com/xiaoyann" target="_blank">xiaoyann</a>
-              <span className="article--time">发布于 1 分钟前</span>
-              <span className="article--tag">JavaScript</span>
-              <span className="article--tag">前端</span>
+              <span className="article--time">发布于 {posts.create_time}</span>
+              {tags.map((tag, i) => <span key={i} className="article--tag">{tag.name}</span>)}
             </div>
           </div>
-          <div className="article--bd" dangerouslySetInnerHTML={createMarkup(article.content)} />
+          <div className="article--bd" dangerouslySetInnerHTML={createMarkup(posts.content)} />
         </div>
       </div>
     );
@@ -42,7 +42,7 @@ class Article extends Component {
 
 function mapStateToProps(state, props) {
   let { data } = state.posts;
-  return { article: data[props.params.pathname] || {} }
+  return { posts: data[props.params.pathname] || {} }
 }
 
 export default connect(mapStateToProps, { fetchDetail: fetchDetail })(Article);

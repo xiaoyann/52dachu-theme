@@ -19,6 +19,7 @@ class Home extends Component {
   }
 
   renderRow(posts, i) {
+    let tags = posts.tag || [];
     return (
       <div className="article-item" key={i}>
         <Link className="article-item--title" to={`/article/${posts.pathname}`}><h3>{posts.title}</h3></Link>
@@ -26,9 +27,8 @@ class Home extends Component {
         <div className="article--info">
           <img className="article--avatar" src="https://avatars0.githubusercontent.com/u/10356168?v=3&s=460" />
           <a className="article--author" href="https://github.com/xiaoyann" target="_blank">xiaoyann</a>
-          <span className="article--time">发布于 1 分钟前</span>
-          <span className="article--tag">JavaScript</span>
-          <span className="article--tag">前端</span>
+          <span className="article--time">发布于 {posts.create_time}</span>
+          {tags.map((tag, i) => <span key={i} className="article--tag">{tag.name}</span>)}
         </div>
       </div>
     );

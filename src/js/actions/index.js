@@ -1,4 +1,4 @@
-import { posts } from 'conf/api';
+import { posts, postsDetail } from 'conf/api';
 
 
 export const POSTS_REQUEST = 'POSTS_REQUEST';
@@ -16,7 +16,7 @@ export function fetchPosts() {
       dispatch({ type: POSTS_FAILURE, message: e.message });
       return;
     }
-    dispatch({ type: POSTS_SUCCESS, posts: response.data });
+    dispatch({ type: POSTS_SUCCESS, posts: response.data.posts });
   }
 }
 
@@ -30,7 +30,7 @@ export function fetchDetail(id) {
     let response, options = { method: 'GET' };
     dispatch({ type: DETAIL_REQUEST });
     try {
-      response = await fetch(`${posts}/${id}`, options)
+      response = await fetch(`${postsDetail}/${id}`, options)
         .then(response => response.json());
     } catch(e) {
       dispatch({ type: DETAIL_FAILURE, message: e.message });

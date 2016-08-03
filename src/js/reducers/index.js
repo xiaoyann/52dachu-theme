@@ -24,7 +24,9 @@ function postsReducer(state = initPosts, action) {
   else if (POSTS_SUCCESS === action.type) {
     let keys, map = {};
     keys = action.posts.map(item => {
-      map[item.pathname] = item;
+      map[item.pathname] = _.assign({}, item, {
+        create_time: (new Date(item.create_time)).toLocaleDateString()
+      });
       return item.pathname;
     });
     return _.assign({}, state, {
@@ -54,7 +56,10 @@ function postsReducer(state = initPosts, action) {
 
   else if (DETAIL_SUCCESS === action.type) {
     let data = {};
-    data[action.posts.pathname] = action.posts;
+    let posts = action.posts;
+    data[posts.pathname] = _.assign({}, posts, {
+      create_time: (new Date(posts.create_time)).toLocaleString()
+    });
     return _.assign({}, state, {
       data: _.assign({}, state.data, data)
     });
