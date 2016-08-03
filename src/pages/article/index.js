@@ -17,9 +17,19 @@ class Article extends Component {
     this.props.fetchDetail(params.pathname);
   }
 
+  componentDidUpdate() {
+  }
+
   render() {
     let { posts } = this.props;
     let tags = posts.tag || [];
+    let url = window.location.href;
+
+    // var el = document.createElement('div');
+    // el.setAttribute('data-thread-key', '1');
+    // el.setAttribute('data-url', location.url);//必选参数
+    // DUOSHUO.EmbedThread(el);
+    // jQuery(container).append(el);
 
     return (
       <div className="content">

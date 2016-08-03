@@ -1,8 +1,8 @@
 if (process.env.NODE_ENV === 'development') {
-  var domain = 'http://localhost:8360';
+  var domain = 'http://localhost:8360/api';
 } else {
-  var domain = 'https://52dachu.com';
+  var domain = '/api';
 }
 
-export const posts = domain;
-export const postsDetail = domain + '/post'
+export const POSTS_LIST   = domain + '/post/list';
+export const POSTS_DETAIL = domain + '/post/detail';

@@ -1,7 +1,8 @@
 .cate-bar {
   padding: 8px 10px;
   border-bottom: 1px solid #EEE;
-  // background-color: yellow;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+  background-color: #FFF;
 }
 
 .cate-bar--tab {
@@ -10,13 +11,10 @@
   margin: 0 6px;
   line-height: 1;
   color: #666;
-  // background-color: pink;
 }
 
 .cate-bar--active {
   border-radius: 3px;
-  // color: #167AC6;
-  // color: #E62117;
   color: #CC181E;
   background-color: #F5F5F5;
   
@@ -27,6 +25,8 @@
 
 .article-list {
   padding-top: 10px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+  background-color: #FFF;
 }
 
 .article-item {

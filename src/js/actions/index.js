@@ -1,4 +1,4 @@
-import { posts, postsDetail } from 'conf/api';
+import { POSTS_LIST, POSTS_DETAIL } from 'conf/api';
 
 
 export const POSTS_REQUEST = 'POSTS_REQUEST';
@@ -10,7 +10,7 @@ export function fetchPosts() {
     let response, options = { method: 'GET' };
     dispatch({ type: POSTS_REQUEST});
     try {
-      response = await fetch(posts, options)
+      response = await fetch(POSTS_LIST, options)
         .then(response => response.json());
     } catch(e) {
       dispatch({ type: POSTS_FAILURE, message: e.message });
@@ -25,12 +25,12 @@ export const DETAIL_REQUEST = 'DETAIL_REQUEST';
 export const DETAIL_SUCCESS = 'DETAIL_SUCCESS';
 export const DETAIL_FAILURE = 'DETAIL_FAILURE';
 
-export function fetchDetail(id) {
+export function fetchDetail(pathname) {
   return async (dispatch, getState) => {
     let response, options = { method: 'GET' };
     dispatch({ type: DETAIL_REQUEST });
     try {
-      response = await fetch(`${postsDetail}/${id}`, options)
+      response = await fetch(`${POSTS_DETAIL}?pathname=${pathname}`, options)
         .then(response => response.json());
     } catch(e) {
       dispatch({ type: DETAIL_FAILURE, message: e.message });

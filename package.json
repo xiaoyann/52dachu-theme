@@ -16,7 +16,7 @@
     "build:test": "NODE_ENV=production node build/webpack.release.js --watch --uglify --deploy=test",
     "build:online": "NODE_ENV=production node build/webpack.release.js --uglify --deploy=online",
     "clean": "rm -rf dist",
-    "release": "cp dist/index.html ../52dachu/view/home/index_index.html && cp -r dist/css dist/js ../52dachu/www/static/"
+    "release": "cp dist/index.html ../../firekylin/view/home/index/index.html && cp -r dist/css dist/js ../../firekylin/www/static/"
   },
   "keywords": [],
   "author": "xiaoyann",
