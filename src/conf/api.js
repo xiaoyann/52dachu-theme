@@ -1,5 +1,6 @@
 if (process.env.NODE_ENV === 'development') {
-  var domain = 'http://localhost:8360/api';
+  // var domain = 'http://localhost:8360/api';
+  var domain = 'http://52dachu.com/api';
 } else {
   var domain = '/api';
 }
