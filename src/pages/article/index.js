@@ -10,6 +10,7 @@ function createMarkup(contents) {
 class Article extends Component {
   constructor(props) {
     super(props);
+    this.commentsDisplayed = false;
   }
 
   componentWillMount() {
@@ -17,19 +18,36 @@ class Article extends Component {
     this.props.fetchDetail(params.pathname);
   }
 
+  componentDidMount() {
+    this.displayComments();
+  }
+
   componentDidUpdate() {
+    this.displayComments();
+  }
+
+  displayComments() {
+    let { id, pathname } = this.props.posts;
+    if (!id || this.commentsDisplayed) return;
+    this.commentsDisplayed = true;
+
+    let container = this.refs.comments;
+    var el = document.createElement('div');
+    el.setAttribute('data-thread-key', id);
+    el.setAttribute('data-url', 'https://52dachu.com/post/' + pathname);
+
+    let timer = setInterval(() => {
+      if (window.__LOADED__) {
+        clearInterval(timer);
+        DUOSHUO.EmbedThread(el);
+        container.appendChild(el);
+      }
+    }, 100);
   }
 
   render() {
     let { posts } = this.props;
     let tags = posts.tag || [];
-    let url = window.location.href;
-
-    // var el = document.createElement('div');
-    // el.setAttribute('data-thread-key', '1');
-    // el.setAttribute('data-url', location.url);//必选参数
-    // DUOSHUO.EmbedThread(el);
-    // jQuery(container).append(el);
 
     return (
       <div className="content">
@@ -44,6 +62,7 @@ class Article extends Component {
             </div>
           </div>
           <div className="article--bd" dangerouslySetInnerHTML={createMarkup(posts.content)} />
+          <div ref="comments" className="comments"></div>
         </div>
       </div>
     );

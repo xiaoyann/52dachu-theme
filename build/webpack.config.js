@@ -181,7 +181,8 @@ config.plugins.push(
       removeEmptyAttributes: true,
       removeScriptTypeAttributes: true,
       removeStyleLinkTypeAttributes: true,
-      removeComments: true
+      removeComments: true,
+      minifyJS: true
     }
   })
 );

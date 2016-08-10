@@ -22,7 +22,7 @@ class Home extends Component {
     let tags = posts.tag || [];
     return (
       <div className="article-item" key={i}>
-        <Link className="article-item--title" to={`/article/${posts.pathname}`}><h3>{posts.title}</h3></Link>
+        <Link className="article-item--title" to={`/post/${posts.pathname}`}><h3>{posts.title}</h3></Link>
         <div className="article-item--summary" dangerouslySetInnerHTML={createMarkup(posts.summary)} />
         <div className="article--info">
           <img className="article--avatar" src="https://avatars0.githubusercontent.com/u/10356168?v=3&s=460" />
