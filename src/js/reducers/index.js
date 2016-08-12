@@ -1,79 +1,61 @@
 import { combineReducers } from 'redux';
 import * as _ from 'bali.js';
-import { 
-  POSTS_REQUEST, POSTS_SUCCESS, POSTS_FAILURE,
-  DETAIL_REQUEST, DETAIL_SUCCESS, DETAIL_FAILURE,
-  ERROR_MESSAGE_RESET
-} from 'actions/index';
+import Reducer from 'reducer';
 
-let initPosts = {
-  keys: [],
-  data: {},
-  isFetching: false,
-  nextPageUrl: '',
-  errorMessage: ''
+let initState = {
+  posts: {
+    keys: [],
+    data: {},
+    isFetching: false,
+    nextPageUrl: '',
+    errorMessage: ''
+  }
 };
 
-function postsReducer(state = initPosts, action) {
-  if (POSTS_REQUEST === action.type) {
-    return _.assign({}, state, {
-      isFetching: true
-    });
-  }
+let reducer = new Reducer();
 
-  else if (POSTS_SUCCESS === action.type) {
-    let keys, map = {};
-    keys = action.posts.map(item => {
-      map[item.pathname] = _.assign({}, item, {
-        create_time: (new Date(item.create_time)).toLocaleDateString()
-      });
-      return item.pathname;
-    });
-    return _.assign({}, state, {
-      keys: _.union(state.keys, keys),
-      data: _.assign({}, state.data, map),
-      isFetching: false
-    });
-  }
 
-  else if (POSTS_FAILURE === action.type) {
-    return _.assign({}, state, {
-      errorMessage: action.message
+// 文章列表请求成功
+function postsSuccess(state, posts) {
+  let keys, map = {};
+  keys = posts.map(item => {
+    map[item.pathname] = _.assign({}, item, {
+      create_time: (new Date(item.create_time)).toLocaleDateString()
     });
-  }
-
-  else if (ERROR_MESSAGE_RESET === action.type) {
-    return _.assign({}, state, {
-      errorMessage: ''
-    });
-  }
-
-  else if (DETAIL_REQUEST === action.type) {
-    return _.assign({}, state, {
-      isFetching: true
-    });
-  }
-
-  else if (DETAIL_SUCCESS === action.type) {
-    let data = {};
-    let posts = action.posts;
-    data[posts.pathname] = _.assign({}, posts, {
-      create_time: (new Date(posts.create_time)).toLocaleString()
-    });
-    return _.assign({}, state, {
-      data: _.assign({}, state.data, data)
-    });
-  }
-
-  else if (DETAIL_FAILURE === action.type) {
-    return _.assign({}, state, {
-      errorMessage: action.message
-    });
-  }
-
-  return state;
+    return item.pathname;
+  });
+  return _.assign({}, state, {
+    keys: _.union(state.keys, keys),
+    data: _.assign({}, state.data, map),
+    isFetching: false
+  });
 }
 
-export default combineReducers({
-  posts: postsReducer
-});
+
+// 更新文章详细信息
+function detailSuccess(state, posts) {
+  let data = {};
+  data[posts.pathname] = _.assign({}, posts, {
+    create_time: (new Date(posts.create_time)).toLocaleString()
+  });
+  return _.assign({}, state, data);
+}
+
+
+// 请求开始时更新 isFetching 状态
+function requestStart() {
+  return true;
+}
+
+
+reducer.register('update', 'posts.isFetching', requestStart);
+reducer.register('update', 'posts', postsSuccess);
+reducer.register('update', 'posts.data', detailSuccess);
+
+reducer.register('update', 'posts.errorMessage', (_, e) => e);
+reducer.register('reset', 'posts.errorMessage', () => '');
+
+
+export default (state = initState, action) => reducer.reduce(state, action)
+
+

@@ -71,7 +71,7 @@ class Article extends Component {
 
 function mapStateToProps(state, props) {
   let { data } = state.posts;
-  return { posts: data[props.params.pathname] || {} }
+  return { posts: data[props.params.pathname] || {} };
 }
 
 export default connect(mapStateToProps, { fetchDetail: fetchDetail })(Article);

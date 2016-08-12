@@ -31,7 +31,7 @@ class Application extends Component {
   }
 }
 
-const store = createStore(reducers, {}, applyMiddleware(thunk));
+const store = createStore(reducers, undefined, applyMiddleware(thunk));
 
 render((
   <Provider store={store}>

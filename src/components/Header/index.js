@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import './styles.scss';
 
 class Header extends Component {
@@ -6,10 +7,10 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="header--bd">
-          <a className="logo" href="/">
+          <Link className="logo" to="/">
             <span className="logo--52">52</span>
             <span className="logo--dachu">dachu</span>
-          </a>
+          </Link>
         </div>
       </div>
     );

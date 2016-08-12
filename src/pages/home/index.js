@@ -61,7 +61,7 @@ class Home extends Component {
 
 function mapStateToProps(state, props) {
   let { keys, data } = state.posts;
-  return { posts: keys.map(key => data[key]) }
+  return { posts: keys.map(key => data[key]) };
 }
 
 export default connect(mapStateToProps, { fetchPosts: fetchPosts })(Home);
