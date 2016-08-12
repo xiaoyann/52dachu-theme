@@ -34,6 +34,7 @@ a {
 }
 
 .container {
+  display: flex;
   width: $containerWidth;
   margin: 0 auto;
   padding-top: 15px;
@@ -41,18 +42,15 @@ a {
 }
 
 .sidebar {
-  float: right;
   width: 270px;
   height: 300px;
+  padding-left: 15px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   background-color: #FFF;
 }
 
 .content {
-  float: left;
-  width: 715px;
-  margin-right: 15px;
-  min-height: 300px;
+  flex: 1;
 }
 
 .logo {
@@ -82,6 +80,7 @@ a {
 }
 
 .article {
+  width: $containerWidth - 30;
   padding: 15px;
   background-color: #FFF;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
@@ -154,14 +153,10 @@ table {
   width: 100%;
   border-spacing: 0;
   border-collapse: collapse;
-  // border-top: 1px solid #DDD;
-  // border-right: 1px solid #DDD;
 }
 
 th, td {
   padding: 5px;
-  // border-bottom: 1px solid #DDD;
-  // border-left: 1px solid #DDD;
   border: 1px solid #DDD;
 }
 

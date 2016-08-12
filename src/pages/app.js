@@ -23,9 +23,8 @@ class Application extends Component {
     return (
       <div> 
         <Header></Header>
-        <div className="container clearfix">
+        <div className="container">
           {this.props.children}
-          <div className="sidebar"></div>
         </div>
       </div>
     );
