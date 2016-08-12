@@ -8,10 +8,14 @@ function createMarkup(contents) {
   return { __html: contents }
 }
 
+let tabs = ['全部', 'JavaScript', 'HTML', 'CSS', 'Node.js', 'Linux', 'PHP', '其他'];
+
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.state = { activeTab: 0 };
     this.renderRow = this.renderRow.bind(this);
+    this.renderTab = this.renderTab.bind(this);
   }
 
   componentDidMount() {
@@ -34,20 +38,18 @@ class Home extends Component {
     );
   }
 
+  renderTab(tab, i) {
+    let cls = this.state.activeTab === i ? 'cate-bar--tab cate-bar--active' : 'cate-bar--tab';
+    return <span className={cls} key={i} onClick={() => this.setState({ activeTab: i })}>{tab}</span>
+  }
+
   render() {
     const { posts } = this.props;
 
     return (
       <div className="content">
         <div className="cate-bar">
-          <a className="cate-bar--tab cate-bar--active">全部</a>
-          <a className="cate-bar--tab">JavaScript</a>
-          <a className="cate-bar--tab">HTML</a>
-          <a className="cate-bar--tab">CSS</a>
-          <a className="cate-bar--tab">Node.js</a>
-          <a className="cate-bar--tab">Linux</a>
-          <a className="cate-bar--tab">PHP</a>
-          <a className="cate-bar--tab">其他</a>
+          {tabs.map(this.renderTab)}
         </div>
         <div className="article-list">
           {posts.map(this.renderRow)}
