@@ -11,3 +11,21 @@
   height: 36px;
   margin: 0 auto;
 }
+
+.github-link {
+  float: right;
+  width: 22px;
+  height: 22px;
+  margin: 7px 0; 
+  color: #333;
+  &:link {
+    color: #333;  
+  }
+  &:hover {
+    color: #4078c0  
+  }
+}
+
+.github-icon {
+  fill: currentColor;
+}
