@@ -75,3 +75,5 @@ function mapStateToProps(state, props) {
 }
 
 export default connect(mapStateToProps, { fetchDetail: fetchDetail })(Article);
+
+
